@@ -5,7 +5,7 @@ using UnityEngine;
 public class Jogadores : MonoBehaviour
 {
 
-    public float velocidade;
+    public float velocidade, yMax, yMin;
     public bool jogador1;
 
 
@@ -30,6 +30,9 @@ public class Jogadores : MonoBehaviour
 
     public void MovimentoDoPlayer1()
     {
+
+        transform.position = new Vector2(transform.position.x, Mathf.Clamp(transform.position.y, yMin, yMax));
+
         if(Input.GetKey(KeyCode.W))
         {
             transform.Translate(Vector2.up * velocidade * Time.deltaTime);
@@ -43,6 +46,9 @@ public class Jogadores : MonoBehaviour
 
     public void MovimentoDoPlayer2()
     {
+
+        transform.position = new Vector2(transform.position.x, Mathf.Clamp(transform.position.y, yMin, yMax));
+
         if(Input.GetKey(KeyCode.UpArrow))
         {
             transform.Translate(Vector2.up * velocidade * Time.deltaTime);
